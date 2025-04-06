@@ -1,5 +1,3 @@
-import math
-
 class Category:
 
     # Init creating the ledger list and the name
