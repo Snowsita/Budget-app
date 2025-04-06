@@ -73,9 +73,7 @@ def create_spend_chart(categories):
     for category in categories:
         spent = sum(abs(entry['amount']) for entry in category.ledger if entry['amount'] < 0)
         percentage = int((spent / total_spent) * 100)
-        print(percentage)
         percentage = round(percentage // 10) * 10
-        print(percentage)
         percentages.append(percentage)  # Round down to nearest 10
     # Creating the range, 100, -1 going backwards one step, -10 subtracting 10 every step
     for i in range(100, -1, -10):
@@ -106,26 +104,3 @@ def create_spend_chart(categories):
         
 
     return (header + chart).rstrip('\n')
-
-
-
-
-food = Category("Business")
-food.deposit(1000, "Deposit")
-food.withdraw(500, "Groceries")
-food.withdraw(200, "Dining")
-
-entertainment = Category("Food")
-entertainment.deposit(500, "Deposit")
-entertainment.withdraw(200, "Movies")
-entertainment.withdraw(150, "Concert")
-
-transport = Category("Enterntainment")
-transport.deposit(500, "Deposit")
-transport.withdraw(100, "Fuel")
-transport.withdraw(50, "Taxi")
-
-categories = [food, entertainment, transport]
-print(">>>")
-print(create_spend_chart(categories))
-print("<<<")
